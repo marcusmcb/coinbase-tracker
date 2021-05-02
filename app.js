@@ -22,7 +22,7 @@ var client = new Client({
 
 // function to call python coinbase script & retrieve all account ids
 const getCoinbaseData = async () => {
-  await PythonShell.run('coinbase_data.py', null, function (err,  results) {
+  await PythonShell.run('coinbase_data.py', null, function (err, results) {
     if (err) {
       console.log(err)
     } else {
