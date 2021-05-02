@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express()
 
-let { PythonShell } = require('python-shell')
+const { PythonShell } = require('python-shell')
 
 // coinbase api keys
 require('dotenv').config()
