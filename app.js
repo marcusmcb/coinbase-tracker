@@ -56,7 +56,7 @@ const getCoinbaseData = async () => {
         console.log('--------------------------')
       }
     }
-  })
+  })  
 }
 
 // home route
@@ -68,6 +68,7 @@ app.get('/', (req, res) => {
 // used python script to pass limit param; unable to duplicate using Node API
 app.get('/getdata', (req, res) => {
   getCoinbaseData()
+  res.send(`<h3 style="color:green">Check yer Node console, son...</h3>`)
 })
 
 // utility endpoint to check arrays are populated correctly
