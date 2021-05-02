@@ -1,13 +1,13 @@
 {
   "name": "coinbase-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "app to pull user data from the coinbase api",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Marcus McBride",
+  "license": "MIT",
   "dependencies": {
     "coinbase": "^2.0.3",
     "dotenv": "^8.2.0",
