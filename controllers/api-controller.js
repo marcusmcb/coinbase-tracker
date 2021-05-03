@@ -17,6 +17,7 @@ var client = new Client({
   strictSSL: false,
 })
 
+// fetch account data from coinbase api
 const getCoinbaseData = async () => {
     await PythonShell.run('coinbase_data.py', null, function (err, results) {
       if (err) {
@@ -55,4 +56,10 @@ const getCoinbaseData = async () => {
     })  
   }
 
+  const checkData = () => {
+    console.log(`ACCOUNT LIST? * * * * * ${accountList}`)
+    console.log(`ACCOUNT IDS? * * * * * * ${accountIds}`)
+  }
+
   exports.getCoinbaseData = getCoinbaseData 
+  exports.checkData = checkData
