@@ -1,5 +1,7 @@
-var express = require('express')
-var app = express()
+const express = require('express')
+const bodyParser = require('body-parser')
+
+const coinbaseRoutes = require('./routes/coinbase-routes')
 
 const { PythonShell } = require('python-shell')
 
@@ -7,6 +9,10 @@ const { PythonShell } = require('python-shell')
 require('dotenv').config()
 const myKey = process.env.MY_KEY
 const mySecret = process.env.MY_SECRET
+
+const app = express()
+
+app.use(bodyParser.json())
 
 // empty arrays to populate w/coinbase data
 let accountList = []
@@ -19,6 +25,18 @@ var client = new Client({
   apiSecret: mySecret,
   strictSSL: false,
 })
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  )
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
+  next()
+})
+
+
 
 // function to call python coinbase script & retrieve all account ids
 const getCoinbaseData = async () => {
@@ -71,6 +89,8 @@ app.get('/getdata', (req, res) => {
   res.send(`<h3 style="color:green">Check yer Node console, son...</h3>`)
 })
 
+app.use('/fetchdata', coinbaseRoutes)
+
 // utility endpoint to check arrays are populated correctly
 app.get('/datacheck', (req, res) => {
   console.log('* * * * * * * * * * * *')
@@ -78,6 +98,21 @@ app.get('/datacheck', (req, res) => {
   console.log('* * * * * * * * * * * *')
   console.log(`DC LST: ${accountList}`)
   console.log('* * * * * * * * * * * *')
+})
+
+// error handling for unsupported routes
+app.use((req, res, next) => {
+  const error = new Error('Could not find this route.', 404)
+  throw error
+})
+
+// error routing
+app.use((error, req, res, next) => {
+  if (res.headerSent) {
+    return next(error)
+  }
+  res.status(error.code || 500)
+  res.json({ message: error.message || 'An unknown error has occurred.' })
 })
 
 app.listen(3000, () => {
