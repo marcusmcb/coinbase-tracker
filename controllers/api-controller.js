@@ -1,4 +1,3 @@
-var express = require('express')
 const { PythonShell } = require('python-shell')
 
 // coinbase api keys
@@ -56,6 +55,7 @@ const getCoinbaseData = async () => {
     })  
   }
 
+  // utility to confirm api data pushed to arrs properly
   const checkData = () => {
     console.log(`ACCOUNT LIST? * * * * * ${accountList}`)
     console.log(`ACCOUNT IDS? * * * * * * ${accountIds}`)

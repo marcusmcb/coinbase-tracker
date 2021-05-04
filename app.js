@@ -44,20 +44,3 @@ app.listen(3000, () => {
   console.log('App listening on PORT 3000')
   console.log('--------------------------')
 })
-
-// get current crypto price & convert to USD
-// client.getBuyPrice({ currencyPair: 'BTC-USD' }, function (err, obj) {
-//   if (err) {
-//     console.log(`getBuyPrice ERROR: ${err}`)
-//   } else {
-//     console.log(
-//       '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - '
-//     )
-//     console.log(
-//       `Current ${obj.data.base}-${obj.data.currency} Conversion: ${obj.data.amount}`
-//     )
-//     console.log(
-//       '- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - '
-//     )
-//   }
-// })
