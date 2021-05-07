@@ -51,6 +51,7 @@ const getCoinbaseData = async () => {
           console.log(`ACCOUNT IDS? ${accountIds}`)
           console.log('--------------------------')
         }
+        return accountList
       }
     })  
   }
@@ -58,7 +59,7 @@ const getCoinbaseData = async () => {
   // utility to confirm api data pushed to arrs properly
   const checkData = () => {
     console.log(`ACCOUNT LIST? * * * * * ${accountList}`)
-    console.log(`ACCOUNT IDS? * * * * * * ${accountIds}`)
+    // console.log(`ACCOUNT IDS? * * * * * * ${accountIds}`)
   }
 
   exports.getCoinbaseData = getCoinbaseData 

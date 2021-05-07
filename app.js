@@ -39,8 +39,8 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || 'An unknown error has occurred.' })
 })
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('--------------------------')
-  console.log('App listening on PORT 3000')
+  console.log('App listening on PORT 3001')
   console.log('--------------------------')
 })
