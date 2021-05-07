@@ -6,7 +6,7 @@ const router = express.Router()
 // route to fetch coinbase api data
 router.get('/', async (req, res) => {
     const data = await apiControllers.getCoinbaseData()
-    const response = await data    
+    const response = await data        
     res.send(response)
 })
 
