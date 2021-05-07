@@ -50,8 +50,9 @@ const getCoinbaseData = async () => {
           console.log('--------------------------')
           console.log(`ACCOUNT IDS? ${accountIds}`)
           console.log('--------------------------')
+          
         }
-        return accountList
+        
       }
     })  
   }
