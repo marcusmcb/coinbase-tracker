@@ -10,6 +10,8 @@ router.get('/', async (req, res) => {
     res.send(response)
 })
 
+router.get('/getaccounts', apiControllers.getAccounts)
+
 // route to validate fetched data persists in controller vars
 router.get('/checkdata', apiControllers.checkData)
 

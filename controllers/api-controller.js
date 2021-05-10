@@ -1,4 +1,5 @@
 const { PythonShell } = require('python-shell')
+const Account = require('../models/accounts')
 
 // coinbase api keys
 require('dotenv').config()
@@ -15,6 +16,17 @@ var client = new Client({
   apiSecret: mySecret,
   strictSSL: false,
 })
+
+const getAccounts = async (req, res, next) => {
+  let accounts
+  try {
+    accounts = await Account.find()
+  } catch (err) {
+    console.log(`GET ACCOUNTS ERROR: ${err}`)
+    return next(error)
+  }
+  console.log(`ACCOUNTS? ${accounts}`)
+}
 
 // fetch account data from coinbase api
 const getCoinbaseData = async () => {
@@ -65,3 +77,4 @@ const checkData = () => {
 
 exports.getCoinbaseData = getCoinbaseData
 exports.checkData = checkData
+exports.getAccounts = getAccounts

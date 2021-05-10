@@ -1,9 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 const coinbaseRoutes = require('./routes/coinbase-routes')
 
 const app = express()
+
+
+const mongoDB = process.env.MONGO_DB
 
 app.use(bodyParser.json())
 
@@ -38,6 +43,21 @@ app.use((error, req, res, next) => {
   res.status(error.code || 500)
   res.json({ message: error.message || 'An unknown error has occurred.' })
 })
+
+// mongoose
+//   .connect(
+//     `'${mongoDB}'`
+//   )
+//   .then(() => {
+//     app.listen(3001, () => {
+//       console.log('--------------------------')
+//       console.log('App listening on PORT 3001')
+//       console.log('--------------------------')
+//     })
+//   })
+//   .catch((err) => {
+//     console.log(`CONNECTION ERROR: ${err}`)
+//   })
 
 app.listen(3001, () => {
   console.log('--------------------------')
